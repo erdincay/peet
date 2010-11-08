@@ -1,0 +1,17 @@
+#!/usr/bin/perl
+use strict;
+use Net::Twitter;
+use Scalar::Util 'blessed';
+
+my $nt = Net::Twitter->new(
+    traits   => [qw/OAuth API::REST/],
+    consumer_key        => '',
+    consumer_secret     => '',
+    access_token        => '',
+    access_token_secret => '',
+);
+
+my $tweet = $ARGV[0] or die "I can't write your tweets for you.";
+
+my $result = $nt->update( "$tweet" );
+
